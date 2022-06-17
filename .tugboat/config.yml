@@ -15,5 +15,4 @@ services:
     image: tugboatqa/node:18.3
     commands:
       build:
-        - ls -a
-        # - cd ../server && npm start
+        - npm start
