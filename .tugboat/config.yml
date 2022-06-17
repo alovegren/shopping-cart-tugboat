@@ -5,7 +5,7 @@ services:
     default: true
     commands:
       init:
-        - ln -snf "${TUGBOAT_ROOT}" "${DOCROOT}"
+        # - ln -snf "${TUGBOAT_ROOT}" "${DOCROOT}"
         - cd server && npm install
     #   build:
     #     - cd server && npm run build:ui
