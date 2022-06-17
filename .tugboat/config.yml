@@ -2,6 +2,7 @@ services:
   apache:
     image: tugboatqa/httpd:2.4
     default: true
+    depends: node
     commands:
       init:
         - curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
@@ -10,3 +11,8 @@ services:
       build:
           - cd server && npm install # this was previously in init section
       #   - cd server && npm run build:ui
+  node:
+    image: tugboatqa/node:18.3
+    commands:
+      build:
+        - cd server && npm start
