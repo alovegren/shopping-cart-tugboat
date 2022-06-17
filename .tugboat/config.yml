@@ -3,9 +3,9 @@ services:
     image: tugboatqa/node:18.3
     expose: 3000
     default: true
-    # commands:
-    #   init:
-    #     - npm install
-    #     - ln -snf "${TUGBOAT_ROOT}" "${DOCROOT}"
+    commands:
+      init:
+        - ln -snf "${TUGBOAT_ROOT}" "${DOCROOT}"
+        - cd server && npm install
     #   build:
     #     - cd server && npm run build:ui
