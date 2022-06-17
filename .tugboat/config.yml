@@ -15,4 +15,4 @@ services:
     image: tugboatqa/node:18.3
     commands:
       init:
-        - .tugboat/init.sh
+        - echo "$PWD"
