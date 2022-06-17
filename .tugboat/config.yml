@@ -15,5 +15,5 @@ services:
     image: tugboatqa/node:18.3
     commands:
       build:
-        - echo "$PWD"
-        - cd ../server && npm start
+        - ls -a
+        # - cd ../server && npm start
