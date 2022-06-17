@@ -14,5 +14,5 @@ services:
   node:
     image: tugboatqa/node:18.3
     commands:
-      build:
-        - cd var/lib/tugboat/server/ && npm start
+      init:
+        - cd server && npm start
