@@ -6,7 +6,7 @@ services:
       init:
         - curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
         - sudo apt-get install -y nodejs
-        - ln -snf "${TUGBOAT_ROOT}/server" "${DOCROOT}"
+        - ln -snf "${TUGBOAT_ROOT}/server/build" "${DOCROOT}"
       build:
           - cd server && npm install # this was previously in init section
       #   - cd server && npm run build:ui
