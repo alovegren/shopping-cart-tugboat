@@ -1,11 +1,12 @@
 services:
-  server:
-    image: tugboatqa/node:18.3
-    expose: 3000
+  apache:
+    image: tugboatqa/httpd:2.4
     default: true
     commands:
       init:
+        - curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+        - sudo apt-get install -y nodejs
         # - ln -snf "${TUGBOAT_ROOT}" "${DOCROOT}"
         - cd server && npm install
-    #   build:
-    #     - cd server && npm run build:ui
+      # build:
+      #   - cd server && npm run build:ui
