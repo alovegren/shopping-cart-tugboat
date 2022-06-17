@@ -4,8 +4,10 @@ const mongoose = require("mongoose");
 const apiRoutes = require("./routes/api");
 const uiRoutes = require("./routes/ui");
 // require("dotenv").config({ path: __dirname + '/../.env' });
+const cors = require('cors');
 
 const app = express();
+app.use(cors())
 
 const port = process.env.PORT || 5001;
 
@@ -30,6 +32,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(express.static('build'));
 app.use(express.static(__dirname + "/public"));
 
 app.use(bodyParser.json());
