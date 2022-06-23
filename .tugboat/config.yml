@@ -16,3 +16,33 @@ services:
     commands:
       init:
         - echo "$PWD"
+services:
+  rails:
+    image: tugboatqa/debian
+    default: true
+    depends: database # the database service below
+    commands:
+      init:
+        - apt-get update
+        - apt-get install ruby ruby-dev
+
+        - apt-get install libpq-dev
+
+        - gem update --system
+        - gem install bundler
+        - bundle install
+
+        - apt-get clean
+        - rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+      update:
+        - bin/rails db:setup
+
+      start:
+        - bin/rails s -b 0.0.0.0 -p 80 & # start the rails server
+
+  database:
+    image: tugboatqa/postgres
+    commands:
+      init:
+        - psql -U postgres -d tugboat -c "ALTER USER tugboat WITH CREATEDB;"
